@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="comment">Add a comment (optional)</label><br>
+      <textarea id="comment" rows="10" cols="30"></textarea><br><br>
+      &nbsp;<input type="submit" value="Accept" onclick="responseButton('Accepted')">&nbsp;
+      <input type="submit" value="Reject" onclick="responseButton('Rejected')">
+    </form>
+    <script>
+      function responseButton(acRj) {
+        google.script.url.getLocation(location => {
+          let suspense = acRj;
+          let rowNum = parseInt(location.parameter.uid);
+          let comment = document.getElementById("comment").value;
+          google.script.run.wgResponse(rowNum, suspense, comment);
+        });        
+      }
+    </script>
+  </body>
+</html>

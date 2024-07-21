@@ -13,8 +13,6 @@
   </head>
   <body>
     <form id="myForm">
-      <!-- <label for="reqid">Request Number: </label><br> -->
-      <!-- <input type="number" id="reqid"><br><br> -->
       <label for="comment">Add a comment (optional)</label><br>
       <textarea id="comment" rows="10" cols="30"></textarea><br><br>
       &nbsp;<input type="submit" value="Accept" onclick="responseButton('Accepted')">&nbsp;
@@ -25,10 +23,8 @@
         google.script.url.getLocation(location => {
           let suspense = acRj;
           let rowNum = parseInt(location.parameter.uid);
-          console.log(rowNum);
-          console.log(typeof(rowNum));
           let comment = document.getElementById("comment").value;
-          google.script.run.response(rowNum, suspense, comment);
+          google.script.run.thResponse(rowNum, suspense, comment);
         });        
       }
     </script>
